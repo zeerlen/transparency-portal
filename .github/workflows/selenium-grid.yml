@@ -3,8 +3,8 @@ name: Deploy Selenium Grid
 on:
   push:
     paths:
+      - selenium-grid/**
       - .github/workflows/selenium-grid.yml
-      - selenium-grid/
 
 jobs:
   build-and-deploy:
