@@ -34,28 +34,28 @@ jobs:
 
     - name: Deploy Selenium Hub
       run: |
-        az containerapp create
-          --name selenium-grid
-          --resource-group ${{ secrets.RESOURCE_GROUP }}
-          --environment ${{ secrets.SELENIUM_GRID_ENV }}
-          --image ${{ secrets.ACR_NAME }}.azurecr.io/selenium-hub:latest
-          --target-port 4444
-          --ingress external ||
-        az containerapp update
-          --name selenium-grid
-          --resource-group ${{ secrets.RESOURCE_GROUP }}
+        az containerapp create \
+          --name selenium-grid \
+          --resource-group ${{ secrets.RESOURCE_GROUP }} \
+          --environment ${{ secrets.SELENIUM_GRID_ENV }} \
+          --image ${{ secrets.ACR_NAME }}.azurecr.io/selenium-hub:latest \
+          --target-port 4444 \
+          --ingress external || \
+        az containerapp update \
+          --name selenium-grid \
+          --resource-group ${{ secrets.RESOURCE_GROUP }} \
           --image ${{ secrets.ACR_NAME }}.azurecr.io/selenium-hub:latest
 
     - name: Deploy Chrome Node
       run: |
-        az containerapp create
-          --name chrome-node
-          --resource-group ${{ secrets.RESOURCE_GROUP }}
-          --environment ${{ secrets.SELENIUM_GRID_ENV }}
-          --image ${{ secrets.ACR_NAME }}.azurecr.io/chrome-node:latest
-          --env-vars SE_EVENT_BUS_HOST=selenium-hub SE_EVENT_BUS_PUBLISH_PORT=4442 SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-          --ingress internal ||
-        az containerapp update
-          --name chrome-node
-          --resource-group ${{ secrets.RESOURCE_GROUP }}
+        az containerapp create \
+          --name chrome-node \
+          --resource-group ${{ secrets.RESOURCE_GROUP }} \
+          --environment ${{ secrets.SELENIUM_GRID_ENV }} \
+          --image ${{ secrets.ACR_NAME }}.azurecr.io/chrome-node:latest \
+          --env-vars SE_EVENT_BUS_HOST=selenium-hub SE_EVENT_BUS_PUBLISH_PORT=4442 SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
+          --ingress internal || \
+        az containerapp update \
+          --name chrome-node \
+          --resource-group ${{ secrets.RESOURCE_GROUP }} \
           --image ${{ secrets.ACR_NAME }}.azurecr.io/chrome-node:latest
