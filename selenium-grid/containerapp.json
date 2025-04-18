@@ -18,7 +18,18 @@
             "memory": "7Gi"
           }
         }
-      ]
+      ],
+      "scale": {
+        "minReplicas": 1,
+        "maxReplicas": 5
+      }
+    },
+    "configuration": {
+      "ingress": {
+        "external": true,
+        "targetPort": 4444
+      }
     }
-  }
+  },
+  "location": "Brazil South"
 }
