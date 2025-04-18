@@ -38,33 +38,10 @@ jobs:
           --name selenium-grid \
           --resource-group ${{ secrets.RESOURCE_GROUP }} \
           --environment ${{ secrets.SELENIUM_GRID_ENV }} \
-          --image acr55092.azurecr.io/selenium-hub:latest \
           --target-port 4444 \
           --ingress external \
-          --set template.containers='[
-            {
-              "name": "selenium-hub",
-              "image": "acr55092.azurecr.io/selenium-hub:latest",
-              "resources": { "cpu": 2, "memory": "4Gi" }
-            },
-            {
-              "name": "chrome-node",
-              "image": "acr55092.azurecr.io/chrome-node:latest",
-              "resources": { "cpu": 2, "memory": "4Gi" }
-            }
-          ]' || \
+          --template-file ./selenium-grid/containerapp.json || \
         az containerapp update \
           --name selenium-grid \
           --resource-group ${{ secrets.RESOURCE_GROUP }} \
-          --set template.containers='[
-            {
-              "name": "selenium-hub",
-              "image": "acr55092.azurecr.io/selenium-hub:latest",
-              "resources": { "cpu": 1, "memory": "1Gi" }
-            },
-            {
-              "name": "chrome-node",
-              "image": "acr55092.azurecr.io/chrome-node:latest",
-              "resources": { "cpu": 3, "memory": "7Gi" }
-            }
-          ]'
+          --template-file ./selenium-grid/containerapp.json
