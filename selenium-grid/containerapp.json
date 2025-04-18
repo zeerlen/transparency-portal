@@ -1,7 +1,7 @@
 {
   "location": "Brazil South",
   "properties": {
-    "managedEnvironmentId": "/subscriptions/f6f39dae-6a66-4417-a02b-7af4a55660b9/resourceGroups/transparency-portal/providers/Microsoft.App/managedEnvironments/selenium-grid-env",
+    "managedEnvironmentId": "/subscriptions/f6f39dae-6a66-4417-a02b-7af4a55660b9/resourceGroups/transparency-portal/providers/Microsoft.App/managedEnvironments/transparency-portal-env",
     "template": {
       "containers": [
         {
