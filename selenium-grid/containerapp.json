@@ -1,21 +1,23 @@
 {
+  "location": "Brazil South",
   "properties": {
+    "managedEnvironmentId": "/subscriptions/f6f39dae-6a66-4417-a02b-7af4a55660b9/resourceGroups/transparency-portal/providers/Microsoft.App/managedEnvironments/selenium-grid-env",
     "template": {
       "containers": [
         {
           "name": "selenium-hub",
           "image": "acr55092.azurecr.io/selenium-hub:latest",
           "resources": {
-            "cpu": 1,
-            "memory": "1Gi"
+            "cpu": 2,
+            "memory": "4Gi"
           }
         },
         {
           "name": "chrome-node",
           "image": "acr55092.azurecr.io/chrome-node:latest",
           "resources": {
-            "cpu": 3,
-            "memory": "7Gi"
+            "cpu": 2,
+            "memory": "4Gi"
           }
         }
       ],
@@ -30,6 +32,5 @@
         "targetPort": 4444
       }
     }
-  },
-  "location": "Brazil South"
+  }
 }
